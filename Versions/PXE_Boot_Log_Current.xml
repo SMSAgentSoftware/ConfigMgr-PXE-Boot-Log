@@ -8,5 +8,12 @@
       </Changes>
       <ReleaseDate>2017-June-21</ReleaseDate>
     </Version>
+    <Version>
+      <Value>1.0</Value>
+      <Changes>
+        <Change>Initial release</Change>
+      </Changes>
+      <ReleaseDate>2017-June-22</ReleaseDate>
+    </Version>
   </Versions>
 </PXE_Boot_Log>
