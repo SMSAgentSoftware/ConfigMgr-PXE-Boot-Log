@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PXE_Boot_Log>
+  <Versions>
+    <Version>
+      <Value>0.1</Value>
+      <Changes>
+        <Change>Beta release</Change>
+      </Changes>
+      <ReleaseDate>2017-June-21</ReleaseDate>
+    </Version>
+  </Versions>
+</PXE_Boot_Log>
