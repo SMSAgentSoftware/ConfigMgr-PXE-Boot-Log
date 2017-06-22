@@ -1,0 +1,65 @@
+﻿<FlowDocumentReader xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" ViewingMode="Scroll">
+    <FlowDocument FontFamily="Segui" FontSize="16">
+        <Paragraph FontSize="22">
+            <Bold>ConfigMgr PXE Boot Log</Bold>
+        </Paragraph>
+        <Paragraph>
+            <Bold>ConfigMgr PXE Boot Log</Bold> enables you to view PXE boot events on a ConfigMgr PXE Service Point. It can also display any associated records that exist in ConfigMgr for the device that attempted PXE boot.
+            It is intended as a troubleshooting tool to help with systems that fail to PXE boot, and can be useful for ConfigMgr admins, or IT support staff who may not have access to the SMSPXE.log on the distribution point.
+        </Paragraph>
+        <Paragraph FontWeight="Bold">
+            Requirements
+        </Paragraph>
+        <List>
+            <ListItem>
+                <Paragraph>
+                    PowerShell 5 minimum on the host computer
+                </Paragraph>
+            </ListItem>
+            <ListItem>
+                <Paragraph>
+                    Minimum read-only access (db_datareader role) to the Configuration Manager database for the account that runs that tool
+                </Paragraph>
+            </ListItem>
+        </List>
+        <Paragraph FontWeight="Bold">
+            How the Tool Works
+        </Paragraph>
+        <Paragraph>
+            The tool connects to your System Center Configuration Manager database and retrieves the list of distribution points that are enabled for PXE. After selecting a PXE Service Point and a time-period, the tool will retrieve the list of attempted (successful or unsuccessful) PXE boots by querying the status messages sent by the distribution point. 
+            By double-clicking any entry in the resulting data, you can check whether any records exist in ConfigMgr for the device that attempted to PXE boot, based on its SMBIOSGUID.  The boot type (Normal or PXE), together with the associated record/s for the device in ConfigMgr, can help determine whether the device has been targeted with an Operating System deployment in ConfigMgr,
+             or whether the device may have duplicated records, preventing the PXE boot. 
+        </Paragraph>
+        <Paragraph FontWeight="Bold">
+            PXE Boot in ConfigMgr - a Quick Overview
+        </Paragraph>
+        <Paragraph >
+            When a device attempts to PXE boot with a ConfigMgr PXE Service Point, the Service Point will, by default, retrieve the LAN MAC address and the SMBIOSGUID as unique identifiers for the device. It will then check if a record exists in the ConfigMgr database with those unique identifiers.
+            If a record does not exist, it will treat it as an unknown computer, and check whether an OS deployment has been targeted at unknown computers in ConfigMgr (if unknown computer support is enabled for the Service Point). If a deployment has been targeted, it will allow it to PXE boot. If not, it will abort the PXE boot and report "no advertisements found" and "not serviced" in the SMSPXE.log.
+            If a record does exist, it will check whether that record is a member of a collection that is targeted with an OS deployment. If so, it can PXE boot; if not, it will abort. 
+        </Paragraph>
+        <Paragraph FontWeight="Bold">
+            How This Tool Can Help
+        </Paragraph>
+        <Paragraph>
+            Issues can occur when, for example, the device attempting to PXE boot is known to ConfigMgr but has not been added to a collection targeted with an OS deployment. In most cases if the computer name is known, this can be easily rectified by adding it to a collection targeted with a deployment. In some cases, the computer name may not be known, in which case the tool can tell you which record/s are associated with the device in ConfigMgr so you know which record to add to you OS deployment-targeted collection.
+            Sometimes duplicate records can exist in ConfigMgr for the same device.  This can be where a computer has been renamed and redeployed, for example. This can cause PXE boot to fail. In this case, either all the records must be added to a deployment-targeted collection, or old records should be purged from the ConfigMgr database.
+            If a system has had a hardware change and has a new MAC address, the device may exist in ConfigMgr with the same SMBIOSGUID but a different MAC address. This can also cause PXE boot to fail. In this case, the old record should ideally be purged from the ConfigMgr database.
+            If a device that attempts to PXE boot appears with the boot type "Normal boot" then it has aborted the PXE boot and is either not targeted by an OS deployment or the F12 press was missed.
+        </Paragraph>
+        <Paragraph FontWeight="Bold">
+            How To Use The Tool
+        </Paragraph>
+        <Paragraph>
+            Upon opening for the first time, you will be prompted to add the details of your Configuration Manager database in the <Bold>Settings</Bold> menu. Here, you can also select whether to display dates and times in your local timezone, or in the ConfigMgr default which is UTC.
+            <LineBreak/>
+            After successfully connecting to the database, the PXE Service Point drop-down will be populated with the list of distribution points that are enabled for PXE.  Select a PXE Service Point.
+            <LineBreak/>
+            Next, select a time-period for which to view PXE events. (Note that if the SQL Server is not using UTC, the UTC offset will be calculated and used so that the selected time-periods are accurate.)
+            <LineBreak/>
+            Click the <Bold>Retrieve Log</Bold> button. The PXE events will be displayed in the datagrid. Note that these entries come from the Status Messages (id's 6311 and 6314) sent by the distribution point to the management point, and not from the SMSPXE.log.
+            <LineBreak/>
+            <Bold>Double-click</Bold> any entry in the list to see which (if any) records are associated with the device in ConfigMgr.  The association is determined from the SMBIOSGUID of the device.
+        </Paragraph>
+    </FlowDocument>
+</FlowDocumentReader>

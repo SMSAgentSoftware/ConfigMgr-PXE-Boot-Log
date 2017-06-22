@@ -1,0 +1,91 @@
+﻿<Window 
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="ConfigMgr PXE Boot Log" WindowStartupLocation="CenterScreen" Height="600" Width="1000">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Indigo.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Green.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <materialDesign:DialogHost Identifier="RootDialog">
+            <materialDesign:DrawerHost >
+                <DockPanel >
+                    <materialDesign:ColorZone DockPanel.Dock="Top" Padding="6" materialDesign:ShadowAssist.ShadowDepth="Depth2" Mode="PrimaryMid">
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="420" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Orientation="Horizontal" Width="Auto" Grid.Column="0">
+                                <TextBlock Margin="10,0,0,0" VerticalAlignment="Center" FontSize="26">ConfigMgr PXE Boot Log</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Width="Auto" HorizontalAlignment="Right" Grid.Column="1">
+                                <!-- Help Menu -->
+                                <materialDesign:PopupBox PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
+                                    <StackPanel Width="180">
+                                        <Button x:Name="Btn_Settings">
+                                            <StackPanel Orientation="Horizontal">
+                                                <materialDesign:PackIcon Kind="Settings" Margin="0,0,20,0"/>
+                                                <TextBlock Text="Settings"/>
+                                            </StackPanel>
+                                        </Button>
+                                        <Separator/>
+                                        <Button x:Name="Btn_About">
+                                            <StackPanel Orientation="Horizontal">
+                                                <materialDesign:PackIcon Kind="InformationOutline" Margin="0,0,20,0"/>
+                                                <TextBlock Text="About"/>
+                                            </StackPanel>
+                                        </Button>
+                                        <Button x:Name="Btn_Help">
+                                            <StackPanel Orientation="Horizontal">
+                                                <materialDesign:PackIcon Kind="HelpCircle" Margin="0,0,20,0"/>
+                                                <TextBlock Text="Help"/>
+                                            </StackPanel>
+                                        </Button>
+                                        <Separator/>
+                                        <Button x:Name="Btn_Exit">
+                                            <StackPanel Orientation="Horizontal">
+                                                <materialDesign:PackIcon Kind="ExitToApp" Margin="0,0,20,0"/>
+                                                <TextBlock Text="Exit"/>
+                                            </StackPanel>
+                                        </Button>
+                                    </StackPanel>
+                                </materialDesign:PopupBox>
+                            </StackPanel>
+                        </Grid>
+                    </materialDesign:ColorZone>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <GroupBox Grid.Row="0" Header="ConfigMgr">
+                            <DockPanel Width="Auto" LastChildFill="False">
+                                <ComboBox x:Name="PXE" Width="400" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="PXE Service Point" FontSize="20" ItemsSource="{Binding [0]}" />
+                                <ComboBox x:Name="TimePeriod" Width="350" HorizontalAlignment="Center" materialDesign:HintAssist.Hint="Time Period" FontSize="20" Margin="10,0,0,0" ItemsSource="{Binding [1]}"/>
+                                <Button x:Name="Retrieve" Content="Retrieve Log" Width="200" Margin="10,0,0,0" IsEnabled="{Binding [11]}" />
+                            </DockPanel>
+                        </GroupBox>
+                        <GroupBox Grid.Row="1" Header="PXE Log">
+                            <DataGrid x:Name="DataGrid" AutoGenerateColumns="True" IsReadOnly="True" SelectionMode="Single" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" ContextMenuService.IsEnabled="{Binding [2]}" ItemsSource="{Binding [3]}" />
+                        </GroupBox>
+                    </Grid>
+                </DockPanel>
+            </materialDesign:DrawerHost>
+        </materialDesign:DialogHost>
+    </Grid>
+</Window>
