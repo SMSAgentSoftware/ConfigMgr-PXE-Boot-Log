@@ -3,4 +3,5 @@ ConfigMgr PXE Boot Log enables you to view PXE boot events on a ConfigMgr PXE Se
 
 The MSI installer can be found on the [Technet Gallery](https://gallery.technet.microsoft.com/ConfigMgr-PXE-Boot-Log-e11a924b).
 
-(https://github.com/SMSAgentSoftware/ConfigMgr-PXE-Boot-Log/raw/master/PXEBoot.png)
+https://raw.githubusercontent.com/SMSAgentSoftware/ConfigMgr-PXE-Boot-Log/master/PXEBoot.png
+
