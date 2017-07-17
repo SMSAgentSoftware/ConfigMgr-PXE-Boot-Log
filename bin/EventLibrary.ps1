@@ -18,7 +18,7 @@ $UI.Window.Add_Loaded({
             Param($UI)
             Get-PXEServicePoints
         }
-        $Job = [BackgroundJob]::new($Code, @($UI), "Function:\Get-PXEServicePoints")
+        $Job = [BackgroundJob]::new($Code, @($UI), @("Function:\Get-PXEServicePoints","Function:\New-PopupMessage"))
         $UI.Jobs += $Job
         $Job.Start()
 
@@ -60,7 +60,7 @@ $UI.Retrieve.Add_Click({
         Param($UI)
         Get-PXELog
     }
-    $Job = [BackgroundJob]::new($Code, @($UI), "Function:\Get-PXELog")
+    $Job = [BackgroundJob]::new($Code, @($UI), @("Function:\Get-PXELog","Function:\New-PopupMessage"))
     $UI.Jobs += $Job
     $Job.Start() 
 })
@@ -107,3 +107,4 @@ $UI.Btn_Help.Add_Click({
     Display-Help
 
 })
+

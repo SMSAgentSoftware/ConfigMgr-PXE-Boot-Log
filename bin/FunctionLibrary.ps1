@@ -459,7 +459,7 @@ Function Get-Settings {
                 Param($UI)
                 Get-PXEServicePoints
             }
-            $Job = [BackgroundJob]::new($Code, @($UI), "Function:\Get-PXEServicePoints")
+            $Job = [BackgroundJob]::new($Code, @($UI), @("Function:\Get-PXEServicePoints","Function:\New-PopupMessage"))
             $UI.Jobs += $Job
             $Job.Start()
         }
@@ -520,8 +520,19 @@ Function Display-Help {
     # Add the FlowDocument to the Window
     $UI.HelpWindow.AddChild($XamlDoc)
 
+    # Handle the ContextMenuOpening event and essentially cancel it to prevent the context menu displaying.
+    # This is due to a bug in the materialdesigninxaml code that causes the app to crash when right-clicking and loading a context menu (doesn't happen in ISE though?)
+    $UI.HelpWindow.Add_ContextMenuOpening({
+        [System.Object]$sender = $this
+		[System.Windows.RoutedEventArgs]$e = $_
+        # or
+        #[System.Object]$sender = $args[0]
+        #[System.Windows.RoutedEventArgs]$e = $args[1]
+        $e.Handled = "true"
+    })
+
     # Show thw Help window
-    $null = $UI.HelpWindow.ShowDialog()
+    $UI.HelpWindow.ShowDialog()
 }
 
 
