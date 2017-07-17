@@ -23,9 +23,9 @@
     <Grid>
         <WrapPanel>
             <TextBlock Text="SQLServer:" VerticalAlignment="Center" Margin="5" FontSize="14" />
-            <TextBox x:Name="SQLServer" materialDesign:HintAssist.Hint="&lt;sqlserver&gt;\&lt;instance&gt;" Margin="5" FontSize="14" Width="200" Text="{Binding [4]}"/>
+            <TextBox x:Name="SQLServer" materialDesign:HintAssist.Hint="&lt;sqlserver&gt;\&lt;instance&gt;" Margin="5" FontSize="14" Width="200" Text="{Binding [4]}" ContextMenuService.IsEnabled="False" ToolTip="Just enter the SQL server name if using the default SQL instance"/>
             <TextBlock Text="Database:" VerticalAlignment="Center" Margin="5" FontSize="14" />
-            <TextBox x:Name="Database" materialDesign:HintAssist.Hint="&lt;CM_ABC&gt;" Margin="11,5,5,5" FontSize="14" Text="{Binding [5]}"/>
+            <TextBox x:Name="Database" materialDesign:HintAssist.Hint="&lt;CM_ABC&gt;" Margin="11,5,5,5" FontSize="14" Text="{Binding [5]}" ContextMenuService.IsEnabled="False"/>
             <TextBlock Text="Display date/time in local timezone:" VerticalAlignment="Center" Margin="5" FontSize="14" ToolTip="Dates are displayed in UTC by default. Check this to convert them to your system timezone."/>
             <ToggleButton x:Name="UseLocalTimeZone" Style="{DynamicResource MaterialDesignSwitchToggleButton}"  Margin="5" ToolTip="Dates are displayed in UTC by default. Check this to convert them to your system timezone." />
             <Button x:Name="Btn_SettingsOK" Content="Save" HorizontalAlignment="Right" Margin="230,5,0,0"/>

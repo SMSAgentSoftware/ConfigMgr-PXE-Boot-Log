@@ -47,7 +47,7 @@
                 <RichTextBox Padding="10" IsReadOnly="True">
                     <FlowDocument>
                         <Paragraph >
-                            <Run>22nd June 2017</Run>
+                            <Run>17th July 2017</Run>
                         </Paragraph>
                     </FlowDocument>
                 </RichTextBox>

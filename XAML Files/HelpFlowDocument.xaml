@@ -1,9 +1,9 @@
-﻿<FlowDocumentReader xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" ViewingMode="Scroll">
+﻿<FlowDocumentReader xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" ViewingMode="Scroll">
     <FlowDocument FontFamily="Segui" FontSize="16">
         <Paragraph FontSize="22">
             <Bold>ConfigMgr PXE Boot Log</Bold>
         </Paragraph>
-        <Paragraph>
+        <Paragraph >
             <Bold>ConfigMgr PXE Boot Log</Bold> enables you to view PXE boot events on a ConfigMgr PXE Service Point. It can also display any associated records that exist in ConfigMgr for the device that attempted PXE boot.
             It is intended as a troubleshooting tool to help with systems that fail to PXE boot, and can be useful for ConfigMgr admins, or IT support staff who may not have access to the SMSPXE.log on the distribution point.
         </Paragraph>
