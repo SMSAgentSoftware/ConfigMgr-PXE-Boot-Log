@@ -15,5 +15,14 @@
       </Changes>
       <ReleaseDate>2017-June-22</ReleaseDate>
     </Version>
+    <Version>
+      <Value>1.1</Value>
+      <Changes>
+        <Change>Fixed bug that caused the application to crash when right-clicking a text box</Change>
+        <Change>The pop-up window that was supposed to appear with a failed SQL connection now appears</Change>
+        <Change>Added a tool-tip on the SQL Server textbox to advice that no instance name is required when using default SQL instance</Change>
+      </Changes>
+      <ReleaseDate>2017-July-17</ReleaseDate>
+    </Version>
   </Versions>
 </PXE_Boot_Log>
