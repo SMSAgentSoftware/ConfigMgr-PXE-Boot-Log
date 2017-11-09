@@ -24,5 +24,12 @@
       </Changes>
       <ReleaseDate>2017-July-17</ReleaseDate>
     </Version>
+    <Version>
+      <Value>1.2</Value>
+      <Changes>
+        <Change>Fixed bug where no DPs would be listed if only one PXE-enabled DP is present in the environment</Change>
+      </Changes>
+      <ReleaseDate>2017-November-09</ReleaseDate>
+    </Version>
   </Versions>
 </PXE_Boot_Log>
