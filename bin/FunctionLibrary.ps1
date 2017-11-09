@@ -158,7 +158,7 @@ Function Get-PXEServicePoints {
     }
 
     # Add the Service point list to the session data and UI
-    $UI.SessionData[0] = $SQLQuery.Result | Select -ExpandProperty ServerName
+    $UI.SessionData[0] = [array]($SQLQuery.Result | Select -ExpandProperty ServerName)
 
     # Enable the "retrieve log" button
     $UI.SessionData[11] = "True"
