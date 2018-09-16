@@ -2,18 +2,7 @@
 ### ConfigMgr PXE Boot Log ###
 ##############################
 
-# Set the source directory
-$OS = (Get-CimInstance -ClassName Win32_OperatingSystem -Property OSArchitecture).OSArchitecture
-If ($OS -eq "32-bit")
-{
-    $ProgramFiles = $env:ProgramFiles
-}
-If ($OS -eq "64-bit")
-{
-    $ProgramFiles = ${env:ProgramFiles(x86)}
-}
-
-$Source = "$ProgramFiles\SMSAgent\ConfigMgr PXE Boot Log"
+$Source = $PSScriptRoot
 
 # Load the required assemblies
 Add-Type -AssemblyName PresentationFramework
@@ -77,7 +66,7 @@ $PSFiles | foreach {
 }
 
 # Define the XAML code for the main window
-[XML]$Xaml = [System.IO.File]::ReadAllLines("$Source\XAML files\App.xaml") 
+[XML]$Xaml = [System.IO.File]::ReadAllLines("$Source\XAML files\App.xaml")
 
 # Create a synchronized hash table and add the WPF window and its named elements to it
 $Global:UI = [System.Collections.Hashtable]::Synchronized(@{})
